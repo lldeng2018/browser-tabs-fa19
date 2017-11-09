@@ -1,7 +1,7 @@
 package apps;
 
 import net.datastructures.Map;
-import net.datastructures.UnsortedListMap;
+import net.datastructures.UnsortedTableMap;
 
 /**
  *
@@ -13,7 +13,7 @@ public class AirportSecurityDatabase {
 
 	/* Create a new database to track tickets and passengers */
 	public AirportSecurityDatabase() {
-		allowedPassengers = new UnsortedListMap<>();
+		allowedPassengers = new UnsortedTableMap<>();
 		nextTicketNumber = 1000;
 	}
 
@@ -40,7 +40,7 @@ public class AirportSecurityDatabase {
 
 		// tickets are registered
 		int birdTicket = db.register("Bird");
-		int frogTicket = db.register("Frog");
+		int frogTicket = db.register(new String("Frog"));
 		int catTicket = db.register("Cat");
 		int giraffeTicket = db.register("Giraffe");
 
@@ -48,7 +48,7 @@ public class AirportSecurityDatabase {
 		int snakeTicket = birdTicket;
 
 		// passengers try to get through security	
-		db.check(frogTicket, "Frog");
+		db.check(frogTicket, new String("Frog"));
 		db.check(giraffeTicket, "Giraffe");
 		db.check(snakeTicket, "Snake");
 	}		

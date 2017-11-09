@@ -37,6 +37,10 @@ package net.datastructures;
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
  */
+// very similar to HW7's NavigableMap
+//public interface NavigableMap<K extends Comparable<K>, V> extends Map<K,V>
+
+
 public interface SortedMap<K,V> extends Map<K,V>{
 
   /**

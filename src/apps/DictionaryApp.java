@@ -9,7 +9,7 @@ import net.datastructures.Entry;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import net.datastructures.SortedListMap;
+import net.datastructures.SortedTableMap;
 import net.datastructures.SortedMap;
 
 /**
@@ -20,13 +20,12 @@ import net.datastructures.SortedMap;
 public class DictionaryApp {
 	public static void main(String[] args) throws URISyntaxException, MalformedURLException, IOException {
 		System.out.println("Downloading...");
-		//URI uri = new URI("https://github.com/adambom/dictionary/blob/master/dictionary.json?raw=true");
-		URI uri = new URI("file:///Users/bdmyers/OneDrive - University of Iowa/uiowa/2230/dictionary.json".replace(" ", "%20"));
+		URI uri = new URI("https://github.com/adambom/dictionary/blob/master/dictionary.json?raw=true");
 		JSONTokener tokener = new JSONTokener(uri.toURL().openStream());
 		JSONObject wordsAndDefs = new JSONObject(tokener);
 		
 		System.out.println("Adding to our dictionary...");
-		SortedMap<String, String> dictionary = new SortedListMap<>();
+		SortedMap<String, String> dictionary = new SortedTableMap<>();
 		// toMap provides the words and definitions as a Java built-in Map,
 		// but we need to put each of the word,definition entries into our sorted map 
 		for (java.util.Map.Entry<String,Object> wd : wordsAndDefs.toMap().entrySet()) {
