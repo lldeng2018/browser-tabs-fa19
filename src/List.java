@@ -20,7 +20,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package net.datastructures;
 
 import java.util.Iterator;
 
@@ -31,7 +30,7 @@ import java.util.Iterator;
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
  */
-public interface List<E> extends Iterable<E> {
+public interface List {
   /**
    * Returns the number of elements in the list.
    * @return number of elements in the list
@@ -50,7 +49,7 @@ public interface List<E> extends Iterable<E> {
    * @return the element at the specified index
    * @throws IndexOutOfBoundsException if the index is negative or greater than size()-1
    */
-  E get(int i) throws IndexOutOfBoundsException;
+  Object get(int i) throws IndexOutOfBoundsException;
 
   /**
    * Replaces the element at the specified index, and returns the element previously stored.
@@ -59,7 +58,7 @@ public interface List<E> extends Iterable<E> {
    * @return the previously stored element
    * @throws IndexOutOfBoundsException if the index is negative or greater than size()-1
    */
-  E set(int i, E e) throws IndexOutOfBoundsException;
+  Object set(int i, Object e) throws IndexOutOfBoundsException;
 
   /**
    * Inserts the given element at the specified index of the list, shifting all
@@ -68,20 +67,28 @@ public interface List<E> extends Iterable<E> {
    * @param  e   the new element to be stored
    * @throws IndexOutOfBoundsException if the index is negative or greater than size()
    */
-  void add(int i, E e) throws IndexOutOfBoundsException;
+  void add(int i, Object e) throws IndexOutOfBoundsException;
 
   /**
    * Removes and returns the element at the given index, shifting all subsequent
    * elements in the list one position closer to the front.
    * @param  i   the index of the element to be removed
    * @return the element that had be stored at the given index
-   * @throws IndexOutOfBoundsException if the index is negative or greater than size()
+   * @throws IndexOutOfBoundsException if the index is negative or greater than size()-1
    */
-  E remove(int i) throws IndexOutOfBoundsException;
+  Object remove(int i) throws IndexOutOfBoundsException;
 
   /**
-   * Returns an iterator of the elements stored in the list.
-   * @return iterator of the list's elements
+   * Moves the element at the given index to the other index
+   * @param from the index of the element to be moved
+   * @param to the index to move that element to
+   * @throws IndexOutOfBoundsException if either index is negative or greater than size()
    */
-  Iterator<E> iterator();
+  void move(int from, int to) throws IndexOutOfBoundsException;
+
+  /**
+   * Returns an array containing the elements of this List in order
+   * @return an array containing the elements of this List in order
+   */
+  Object[] toArray();
 }
