@@ -330,19 +330,6 @@ public class LinkedListTest {
             assertArrayEquals(expected, actual);
         }
 
-        @Test(expected = IndexOutOfBoundsException.class)
-		public void testAddIndexTooBig() {
-			List ll = new LinkedList();
-			ll.add(0, 100);
-			ll.add(2, 200);
-		}
-
-        @Test(expected = IndexOutOfBoundsException.class)
-        public void testAddIndexTooSmall() {
-            List ll = new LinkedList();
-            ll.add(0, 100);
-            ll.add(-1, 200);
-        }
 
 		@Test
 		public void testSizeEmpty() {
@@ -384,4 +371,91 @@ public class LinkedListTest {
 			Object[] expected = { 500, 600, 300 };
 			assertArrayEquals(actual, expected);
 		}
+
+		// Tests that say expected = IndexOutOfBoundsException.class
+	    // means that the code must throw and IndexOutOfBoundsException
+	    // for the test to pass
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testAddIndexTooBig() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.add(2, 200);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testAddIndexTooSmall() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.add(-1, 200);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testGetIndexTooBig() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.get(1);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testGetIndexTooSmall() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.get(-1);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testSetIndexTooBig() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.set(1, 200);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testSetIndexTooSmall() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.set(-1, 200);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testRemoveIndexTooBig() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.remove(1);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testRemoveIndexTooSmall() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.remove(-1);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testMoveFromTooBig() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.move(1, 0);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testMoveToTooBig() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.move(0, 1);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testMoveToTooSmall() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.move(0, -1);
+        }
+
+        @Test(expected = IndexOutOfBoundsException.class)
+        public void testMoveFromTooSmall() {
+            List ll = new LinkedList();
+            ll.add(0, 100);
+            ll.move(-1, 0);
+        }
 }
