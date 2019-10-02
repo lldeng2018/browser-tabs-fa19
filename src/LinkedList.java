@@ -32,7 +32,8 @@
 public class LinkedList implements List {
   // instance variables
 
-  /* your private instance variables go here.
+  /* Part 1:
+   * your private instance variables go here.
    * It is recommended that you use a "sentinel node" at the front of the list
    *  to make the methods easier to implement. However, using a sentinel node is not required.
    */
