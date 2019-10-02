@@ -21,16 +21,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 /**
- * Realization of a list by means of a dynamic array. This is a simplified version
- * of the java.util.LinkedList class.
- *
  * @author Michael T. Goodrich
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
+ *
+ * modified by
+ * @author Brandon Myers
  */
 public class LinkedList implements List {
   // instance variables
@@ -42,9 +39,6 @@ public class LinkedList implements List {
 
   /* The current number of elements in the list */
 
-  /** Current number of elements in the list. */
-  private int size = 0;                    // current number of elements
-
   // constructors
   /* Part 1:
    * create an empty list
@@ -55,16 +49,10 @@ public class LinkedList implements List {
 
   // public methods
   /**
-   * Returns the number of elements in the list.
-   * @return number of elements in the list
-   */
-  public int size() { return size; }
-
-  /**
    * Tests whether the array list is empty.
    * @return true if the array list is empty, false otherwise
    */
-  public boolean isEmpty() { return size == 0; }
+  public boolean isEmpty() { return size() == 0; }
 
 
   /* Part 1: toArray
@@ -91,9 +79,17 @@ public class LinkedList implements List {
     return r;
   }
 
+  /* Part 1: size
+   */
+  /**
+   * Returns the number of elements in the list.
+   * @return number of elements in the list
+   */
+  public int size() {
+    return -1; // finish this
+  }
+
   /* Part 1: add
-   * add d to the end of the list
-   *
    * Example
    * before: [ 100, 200 ]
    * add(2, 300)
@@ -161,11 +157,13 @@ public class LinkedList implements List {
    * before: [ 100, 200, 300 ]
    * move(1, 0)
    * after:  [ 200, 100, 300 ]
+   * that is, it moves 200 (element 1) so it is element 0
    *
    * Example
    * before: [ 100, 200, 300, 400 ]
    * move(1,3)
    * after: [ 100, 300, 400, 200 ]
+   * that is, it moves 200 (element 1) so it is element 3
    */
   /**
    * Moves the element at the given index to the other index
@@ -189,46 +187,25 @@ public class LinkedList implements List {
    * element and to the subsequent node in the list (or null if this
    * is the last node).
    *
-   * You do not need to modify the Node class
+   * you DON'T need to modify this class
    */
   private static class Node {
 
     /** The element stored at this node */
-    private Object element;            // reference to the element stored at this node
+    public Object element;            // reference to the element stored at this node
 
     /** A reference to the subsequent node in the list */
-    private Node next;         // reference to the subsequent node in the list
+    public Node next;         // reference to the subsequent node in the list
 
     /**
-     * Creates a node with the given element and next node.
+     * Creates a node with the given element and null for next
      *
      * @param e  the element to be stored
-     * @param n  reference to a node that should follow the new node
      */
-    public Node(Object e, Node n) {
+    public Node(Object e) {
       element = e;
-      next = n;
+      next = null;
     }
-
-    // Accessor methods
-    /**
-     * Returns the element stored at the node.
-     * @return the element stored at the node
-     */
-    public Object getElement() { return element; }
-
-    /**
-     * Returns the node that follows this one (or null if no such node).
-     * @return the following node
-     */
-    public Node getNext() { return next; }
-
-    // Modifier methods
-    /**
-     * Sets the node's next reference to point to Node n.
-     * @param n    the node that should follow this one
-     */
-    public void setNext(Node n) { next = n; }
   } //----------- end of nested Node class -----------
-
 }
+//fa19

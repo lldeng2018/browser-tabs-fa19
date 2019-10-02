@@ -21,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.util.Iterator;
 
 /**
  * A simplified version of the java.util.List interface.
@@ -29,6 +28,9 @@ import java.util.Iterator;
  * @author Michael T. Goodrich
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
+ *
+ * modified by
+ * @author Brandon Myers
  */
 public interface List {
   /**
